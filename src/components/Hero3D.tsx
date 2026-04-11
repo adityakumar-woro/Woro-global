@@ -184,7 +184,6 @@ function Arc({
 
   return (
     <group>
-      {/* @ts-expect-error drei Line typing */}
       <Line
         points={points}
         color="#A78BFA"
@@ -211,7 +210,6 @@ function ChatBubble() {
   return (
     <Float speed={1.6} rotationIntensity={0.4} floatIntensity={1.2}>
       <group position={[2.45, 1.2, 0.3]} rotation={[0, -0.3, 0]}>
-        {/* @ts-expect-error drei RoundedBox typing */}
         <RoundedBox args={[0.85, 0.6, 0.18]} radius={0.14} smoothness={6}>
           <meshStandardMaterial
             color="#10b981"
