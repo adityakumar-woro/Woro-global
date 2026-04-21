@@ -70,7 +70,7 @@ export default function PageHero({
         </motion.div>
 
         <h1
-          className={`font-display font-medium tracking-[-0.045em] leading-[0.92] text-[clamp(2.8rem,7vw,6.4rem)] ${
+          className={`font-display font-medium tracking-[-0.045em] leading-[1.02] text-[clamp(2.8rem,7vw,6.4rem)] ${
             dark ? "text-white" : "text-ink"
           } ${align === "center" ? "text-center max-w-4xl mx-auto" : "max-w-5xl"}`}
         >

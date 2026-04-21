@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, MessageCircle, PhoneCall, Mic, Play, Check } from "lucide-react";
+import { ArrowUpRight, MessageCircle, PhoneCall, Video, Play, Check, Sparkles } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const products = [
@@ -107,52 +107,56 @@ const products = [
     ),
   },
   {
-    slug: "woro-cast",
-    name: "WORO Cast",
-    label: "AI Voice Generator",
+    slug: "woro-ugc",
+    name: "WORO UGC",
+    label: "UGC & Marketing Video Platform",
     tagline:
-      "Studio-grade AI voiceovers in 200+ voices for UGC, ads and short-form video.",
-    icon: Mic,
+      "Generate UGC-style ads and marketing videos at creator scale — AI avatars, hooks and voices in one place.",
+    icon: Video,
     accent: "from-fuchsia-400 to-[#6C5DFC]",
     features: [
-      "200+ ultra-realistic voices",
-      "Voice cloning in seconds",
-      "One-click export to video",
-      "Emotion & tone control",
+      "AI UGC avatars in 40+ languages",
+      "Trending hook & script templates",
+      "Auto-captions & B-roll sync",
+      "One-click to TikTok, Reels, Shorts",
     ],
     mockup: (
       <div className="space-y-3">
         <div className="flex items-center gap-2.5">
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-400 to-[#6C5DFC] flex items-center justify-center">
-            <Mic className="w-4 h-4 text-white" />
+            <Video className="w-4 h-4 text-white" />
           </div>
           <div className="flex-1 space-y-1">
             <div className="h-2 w-28 rounded-full bg-white/45" />
             <div className="h-1.5 w-20 rounded-full bg-white/22" />
           </div>
-          <div className="text-[10px] px-2 py-0.5 rounded-full bg-white/8 border border-white/15 text-white/70">EN-US</div>
+          <div className="text-[10px] px-2 py-0.5 rounded-full bg-fuchsia-500/20 border border-fuchsia-400/30 text-fuchsia-200">9:16</div>
         </div>
-        <div className="relative h-14 rounded-lg bg-white/5 border border-white/10 overflow-hidden flex items-center px-2 gap-[2px]">
-          {Array.from({ length: 40 }).map((_, i) => {
-            const h = Math.round(20 + Math.abs(Math.sin(i * 0.55)) * 75);
-            return (
-              <div
-                key={i}
-                className="flex-1 rounded-full bg-gradient-to-t from-fuchsia-400/85 to-[#A78BFA]"
-                style={{ height: `${h}%` }}
-              />
-            );
-          })}
-          <div className="absolute left-1/3 top-0 bottom-0 w-[2px] bg-white/85 shadow-[0_0_10px_rgba(255,255,255,0.7)]" />
+        <div className="relative h-14 rounded-xl bg-gradient-to-br from-fuchsia-500/25 via-violet-500/20 to-pink-500/25 border border-white/10 overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 noise opacity-30" />
+          <div className="relative flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur border border-white/30 flex items-center justify-center">
+              <Play className="w-3 h-3 text-white fill-white" />
+            </div>
+            <div className="text-[10px] text-white/90 font-medium">POV: your first viral ad</div>
+          </div>
+          <div className="absolute top-1 left-1.5 text-[9px] px-1.5 rounded-full bg-white/15 backdrop-blur text-white/90">TikTok</div>
+          <div className="absolute bottom-1 right-1.5 flex items-center gap-1 text-[9px] text-white/90">
+            <Sparkles className="w-2.5 h-2.5 text-fuchsia-300" />
+            AI UGC
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
-            <Play className="w-3 h-3 text-white" />
-          </div>
-          <div className="flex-1 h-1 rounded-full bg-white/15">
-            <div className="h-full w-1/3 rounded-full bg-gradient-to-r from-fuchsia-400 to-[#A78BFA]" />
-          </div>
-          <div className="text-[10px] text-white/55">0:12 / 0:38</div>
+        <div className="grid grid-cols-3 gap-1.5">
+          {[
+            { label: "Hook", val: "92%" },
+            { label: "CTR", val: "4.1×" },
+            { label: "ROAS", val: "3.8×" },
+          ].map((s) => (
+            <div key={s.label} className="rounded-md bg-white/8 border border-white/10 py-1.5 text-center">
+              <div className="text-[10px] font-display font-medium text-white">{s.val}</div>
+              <div className="text-[8px] uppercase tracking-wider text-white/50">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     ),

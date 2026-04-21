@@ -43,7 +43,7 @@ const articles = [
   {
     cat: "AI",
     title: "Voice cloning ethics: what we ship and what we refuse",
-    excerpt: "The guardrails behind WORO Cast and why we turned down two large deals last quarter.",
+    excerpt: "The guardrails behind WORO UGC's AI avatars and why we turned down two large deals last quarter.",
     readTime: "6 min",
     date: "Feb 2026",
     icon: Video,

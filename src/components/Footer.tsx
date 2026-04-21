@@ -6,7 +6,7 @@ import Logo from "./Logo";
 const products = [
   { label: "WORO Chat — WhatsApp CRM", href: "/products/woro-chat" },
   { label: "WORO Voice — AI Calling Agents", href: "/products/woro-voice" },
-  { label: "WORO Cast — AI Voice Generator", href: "/products/woro-cast" },
+  { label: "WORO UGC — UGC & Video Platform", href: "/products/woro-ugc" },
 ];
 
 const services = [
@@ -20,6 +20,8 @@ const services = [
 ];
 
 const company = [
+  { label: "WORO AI", href: "/woro-ai" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
   { label: "Process", href: "/process" },
   { label: "Industries", href: "/industries" },
@@ -99,11 +101,11 @@ export default function Footer() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Phone className="w-4 h-4 mt-0.5 text-brand" />
-                  +1 (555) 010-2024
+                  +91 99966 11185
                 </li>
                 <li className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 mt-0.5 text-brand" />
-                  San Francisco · Bengaluru
+                  Phase IV, Udyog Vihar, Sector 18, Gurugram, Haryana 122015
                 </li>
               </ul>
             </div>

@@ -316,3 +316,31 @@ body {
 .glow-ring {
   box-shadow: 0 0 0 1px rgba(108, 93, 252, 0.18), 0 30px 80px -30px rgba(108, 93, 252, 0.35);
 }
+
+/* Aurora border — animates the conic gradient angle, NOT the element itself */
+@property --aurora-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes aurora-spin {
+  to { --aurora-angle: 360deg; }
+}
+.aurora-ring {
+  background: conic-gradient(
+    from var(--aurora-angle),
+    #6C5DFC 0%,
+    #4F46E5 20%,
+    #2563EB 40%,
+    #A78BFA 60%,
+    #6C5DFC 80%,
+    #4F46E5 100%
+  );
+  animation: aurora-spin 18s linear infinite;
+}
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .aurora-ring {
+    background: linear-gradient(115deg, #6C5DFC, #4F46E5, #2563EB, #A78BFA);
+    animation: none;
+  }
+}

@@ -2,8 +2,8 @@
 
 import SectionHeader from "./SectionHeader";
 
-const row1 = ["React", "Next.js", "Node.js", "Python", "Django", "AWS", "Flutter", "Swift"];
-const row2 = ["TypeScript", "PostgreSQL", "MongoDB", "Docker", "Kubernetes", "Azure", "GraphQL", "Firebase"];
+const row1 = ["React", "Next.js", "Node.js", "Python", "Django", "Spring Boot", "AWS", "Flutter", "Swift", "Kotlin"];
+const row2 = ["TypeScript", "PostgreSQL", "MongoDB", "Docker", "Kubernetes", "Azure", "GraphQL", "Firebase", "Kotlin", "Spring Boot"];
 
 function Badge({ label, dark = false }: { label: string; dark?: boolean }) {
   return (

@@ -15,12 +15,7 @@ export default function Logo({
           variant === "dark" ? "text-ink" : "text-white"
         )}
       >
-        wo
-        <span className="relative inline-block">
-          r
-          <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-brand" />
-        </span>
-        o
+        woro
         <sup className="text-[10px] ml-0.5 text-brand">®</sup>
       </span>
       <span

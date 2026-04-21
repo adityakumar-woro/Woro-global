@@ -1,27 +1,36 @@
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Products from "@/components/Products";
+import IntroLoader from "@/components/IntroLoader";
+import CustomCursor from "@/components/CustomCursor";
+import CinematicHero from "@/components/CinematicHero";
+import ScrollManifesto from "@/components/ScrollManifesto";
+import HorizontalProducts from "@/components/HorizontalProducts";
+import StickyServicesShowcase from "@/components/StickyServicesShowcase";
+import ShaderBand from "@/components/ShaderBand";
 import Industries from "@/components/Industries";
 import WhyUs from "@/components/WhyUs";
-import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import TechStack from "@/components/TechStack";
-import CTABanner from "@/components/CTABanner";
-import Contact from "@/components/Contact";
+import ShaderFinale from "@/components/ShaderFinale";
+import HomepageContactStrip from "@/components/HomepageContactStrip";
+import ScrollTriggerPopup from "@/components/ScrollTriggerPopup";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Services />
-      <Products />
+      <IntroLoader />
+      <CustomCursor />
+
+      <CinematicHero />
+      <ScrollManifesto />
+      <HorizontalProducts />
+      <StickyServicesShowcase />
+      <ShaderBand />
       <Industries />
       <WhyUs />
-      <Process />
       <Testimonials />
       <TechStack />
-      <CTABanner />
-      <Contact />
+      <ShaderFinale />
+      <HomepageContactStrip />
+      <ScrollTriggerPopup />
     </>
   );
 }

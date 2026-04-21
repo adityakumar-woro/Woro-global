@@ -13,7 +13,7 @@ const features = [
 ];
 
 const stats = [
-  { value: 200, suffix: "+", label: "Happy clients" },
+  { value: 150, suffix: "+", label: "Clients served" },
   { value: 98, suffix: "%", label: "Retention" },
   { value: 24, suffix: "/7", label: "Support" },
   { value: 15, suffix: "+", label: "Countries" },

@@ -328,8 +328,8 @@ export default function WoroVoicePage() {
               Get free minutes
               <ArrowUpRight className="w-4 h-4" />
             </Link>
-            <Link href="/products/woro-cast" className="btn-ghost">
-              Explore WORO Cast
+            <Link href="/products/woro-ugc" className="btn-ghost">
+              Explore WORO UGC
             </Link>
           </div>
         </div>

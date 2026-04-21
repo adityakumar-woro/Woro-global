@@ -18,14 +18,32 @@ const services = [
 ];
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", company: "", service: services[0], message: "" });
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm({ name: "", email: "", company: "", service: services[0], message: "" });
+    if (status === "sending") return;
+    setStatus("sending");
+    setErrorMsg(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.issues?.[0]?.message ?? data?.error ?? "Could not send. Please try again.");
+      }
+      setStatus("sent");
+      setForm({ name: "", email: "", company: "", service: services[0], message: "" });
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
+    }
   }
 
   return (
@@ -62,8 +80,8 @@ export default function Contact() {
 
             <div className="space-y-6">
               <ContactRow icon={Mail} label="Email" value="hello@woroglobal.com" />
-              <ContactRow icon={Phone} label="Phone" value="+1 (555) 010-2024" />
-              <ContactRow icon={MapPin} label="Office" value="San Francisco · Bengaluru" />
+              <ContactRow icon={Phone} label="Phone" value="+91 99966 11185" />
+              <ContactRow icon={MapPin} label="Office" value="Gurugram, Haryana" />
             </div>
 
             <div className="pt-6 border-t border-line">
@@ -144,13 +162,16 @@ export default function Contact() {
               />
             </Field>
 
-            <div className="pt-2">
+            <div className="pt-2 space-y-3">
               <button
                 type="submit"
-                className="btn-primary w-full sm:w-auto justify-center"
+                disabled={status === "sending" || status === "sent"}
+                className="btn-primary w-full sm:w-auto justify-center disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {submitted ? (
+                {status === "sent" ? (
                   "Thanks — we'll be in touch."
+                ) : status === "sending" ? (
+                  "Sending…"
                 ) : (
                   <>
                     Send message
@@ -158,6 +179,9 @@ export default function Contact() {
                   </>
                 )}
               </button>
+              {status === "error" && errorMsg && (
+                <p className="text-sm text-red-600" role="alert">{errorMsg}</p>
+              )}
             </div>
           </motion.form>
         </div>

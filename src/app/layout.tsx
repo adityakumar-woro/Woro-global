@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AgentWidget from "@/components/AgentWidget";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <AgentWidget />
       </body>
     </html>
   );

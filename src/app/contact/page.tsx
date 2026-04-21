@@ -11,14 +11,13 @@ export const metadata: Metadata = {
 
 const channels = [
   { icon: Mail, label: "Email us", value: "hello@woroglobal.com", desc: "We answer within 24 hours, weekends included." },
-  { icon: Phone, label: "Call us", value: "+1 (555) 010-2024", desc: "Mon–Fri, 9am–7pm across all time zones." },
-  { icon: MessageCircle, label: "WhatsApp", value: "+91 98765 43210", desc: "The fastest way to reach a real human." },
+  { icon: Phone, label: "Call us", value: "+91 99966 11185", desc: "Mon–Fri, 9am–7pm across all time zones." },
+  { icon: MessageCircle, label: "WhatsApp", value: "+91 99966 11185", desc: "The fastest way to reach a real human." },
   { icon: Calendar, label: "Book a slot", value: "Pick a 30-min window", desc: "Free architecture & strategy consultation." },
 ];
 
 const offices = [
-  { city: "San Francisco", country: "United States", address: "221 Innovation Way, Suite 500", time: "PST · UTC-8", tone: "from-blue-100 to-cyan-100" },
-  { city: "Bengaluru", country: "India", address: "No. 14, Indiranagar 100ft Road", time: "IST · UTC+5:30", tone: "from-violet-100 to-blue-100" },
+  { city: "Gurugram", country: "India", address: "Phase IV, Udyog Vihar, Sector 18, Gurugram, Haryana 122015", time: "IST · UTC+5:30", tone: "from-violet-100 to-blue-100" },
 ];
 
 export default function ContactPage() {
@@ -74,18 +73,18 @@ export default function ContactPage() {
                 Where we work
               </div>
               <h2 className="font-display font-medium text-[clamp(2.4rem,5vw,4rem)] tracking-tight leading-[1] text-white">
-                Two cities,<br />
-                <span className="font-serif-italic text-white/85">one team.</span>
+                One HQ,<br />
+                <span className="font-serif-italic text-white/85">global reach.</span>
               </h2>
             </div>
             <div className="lg:col-span-5 lg:pt-12">
               <p className="text-white/65 text-base sm:text-lg leading-relaxed">
-                Coverage across PST and IST means there's always someone awake on your project — even at 3am.
+                Based in Gurugram and shipping for clients across every time zone — there's always someone on your project.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-5">
             {offices.map((o) => (
               <div key={o.city} className="group relative rounded-3xl border border-white/10 overflow-hidden hover:border-white/30 transition">
                 <div className={`relative aspect-[16/9] bg-gradient-to-br ${o.tone}`}>

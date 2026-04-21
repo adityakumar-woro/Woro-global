@@ -30,13 +30,16 @@ export function RevealText({
 
   return (
     // @ts-expect-error generic motion tag
-    <MotionTag ref={ref} className={cn("inline-block", className)}>
+    <MotionTag ref={ref} className={cn("inline-block align-bottom", className)}>
       {words.map((w, i) => (
-        <span key={i} className="inline-block overflow-hidden align-bottom mr-[0.25em]">
+        <span
+          key={i}
+          className="inline-block overflow-hidden align-bottom leading-[1.25] pt-[0.08em] pb-[0.25em] px-[0.08em] -mx-[0.02em] mr-[0.2em] -mb-[0.1em]"
+        >
           <motion.span
-            className="inline-block"
-            initial={{ y: "110%" }}
-            animate={inView ? { y: 0 } : { y: "110%" }}
+            className="inline-block leading-[1.25]"
+            initial={{ y: "120%" }}
+            animate={inView ? { y: 0 } : { y: "120%" }}
             transition={{
               duration: 0.85,
               delay: delay + i * stagger,
