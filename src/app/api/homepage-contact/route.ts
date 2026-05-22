@@ -38,20 +38,16 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Could not save submission" }, { status: 500 });
   }
 
-  try {
-    await sendLeadEmail({
-      subject: `New homepage lead — ${email}`,
-      heading: "Homepage quick-contact lead",
-      intro: "Someone dropped their mobile + email from the homepage contact strip.",
-      replyTo: email,
-      rows: [
-        { label: "Mobile", value: mobile },
-        { label: "Email", value: email },
-      ],
-    });
-  } catch (err) {
-    console.error("[/api/homepage-contact] email send failed", err);
-  }
+  sendLeadEmail({
+    subject: `New homepage lead — ${email}`,
+    heading: "Homepage quick-contact lead",
+    intro: "Someone dropped their mobile + email from the homepage contact strip.",
+    replyTo: email,
+    rows: [
+      { label: "Mobile", value: mobile },
+      { label: "Email", value: email },
+    ],
+  }).catch((err) => console.error("[/api/homepage-contact] email send failed", err));
 
   return Response.json({ ok: true });
 }

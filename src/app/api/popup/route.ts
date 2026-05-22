@@ -62,23 +62,19 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Could not save submission" }, { status: 500 });
   }
 
-  try {
-    await sendLeadEmail({
-      subject: `New popup lead — ${name}`,
-      heading: "Homepage popup lead",
-      intro: "Prospect submitted the scroll-triggered popup form.",
-      replyTo: companyEmail,
-      rows: [
-        { label: "Name", value: name },
-        { label: "Company email", value: companyEmail },
-        { label: "Phone", value: `${dialCode} ${contactNumber}` },
-        { label: "Work email", value: workEmail },
-        { label: "Project", value: projectDescription },
-      ],
-    });
-  } catch (err) {
-    console.error("[/api/popup] email send failed", err);
-  }
+  sendLeadEmail({
+    subject: `New popup lead — ${name}`,
+    heading: "Homepage popup lead",
+    intro: "Prospect submitted the scroll-triggered popup form.",
+    replyTo: companyEmail,
+    rows: [
+      { label: "Name", value: name },
+      { label: "Company email", value: companyEmail },
+      { label: "Phone", value: `${dialCode} ${contactNumber}` },
+      { label: "Work email", value: workEmail },
+      { label: "Project", value: projectDescription },
+    ],
+  }).catch((err) => console.error("[/api/popup] email send failed", err));
 
   return Response.json({ ok: true });
 }

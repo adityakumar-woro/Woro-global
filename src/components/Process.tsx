@@ -22,10 +22,10 @@ export default function Process() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="process" className="relative section-light py-28 sm:py-40 overflow-hidden">
+    <section id="process" className="relative section-light py-20 sm:py-28 md:py-40 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30 grid-mask" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
           <div className="lg:col-span-7">
             <SectionHeader

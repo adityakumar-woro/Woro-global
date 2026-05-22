@@ -68,9 +68,10 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Big outer ring */}
+      {/* Big outer ring — must sit above the scroll-trigger popup (z-[130]) so the
+          cursor remains visible while hovering the close button and modal. */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[90] rounded-full border border-[#6C5DFC]/70 mix-blend-difference"
+        className="pointer-events-none fixed top-0 left-0 z-[200] rounded-full border border-[#6C5DFC]/70 mix-blend-difference"
         style={{ x: springX, y: springY }}
         animate={{
           width: variant === "link" ? 80 : variant === "text" ? 6 : 28,
@@ -98,7 +99,7 @@ export default function CustomCursor() {
 
       {/* Inner dot */}
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[91] w-1.5 h-1.5 rounded-full bg-[#A78BFA] mix-blend-difference"
+        className="pointer-events-none fixed top-0 left-0 z-[201] w-1.5 h-1.5 rounded-full bg-[#A78BFA] mix-blend-difference"
         style={{
           x: springX,
           y: springY,

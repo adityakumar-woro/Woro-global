@@ -53,17 +53,17 @@ export default function HomepageContactStrip() {
   }
 
   return (
-    <section className="relative section-light py-24 sm:py-32 overflow-hidden">
+    <section className="relative section-light py-16 sm:py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-25 grid-mask" />
-      <div className="relative mx-auto max-w-5xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-5xl px-5 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="rounded-3xl bg-white border border-line p-8 sm:p-12 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.15)]"
+          className="rounded-3xl bg-white border border-line p-6 sm:p-8 md:p-12 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.15)]"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-5">
               <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted mb-5">
                 <span className="w-6 h-px bg-ink/40" />

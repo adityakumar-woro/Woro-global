@@ -4,16 +4,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function IntroLoader() {
-  const [visible, setVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
 
+  // Mount + decide visibility client-side only to avoid SSR hydration mismatches
+  // (Framer Motion serializes transform / opacity differently between server and client).
   useEffect(() => {
-    // show once per session
-    if (typeof window === "undefined") return;
+    setMounted(true);
     const seen = sessionStorage.getItem("woro-intro-seen");
-    if (seen === "1") {
-      setVisible(false);
-      return;
-    }
+    if (seen === "1") return;
+    setVisible(true);
     const t = setTimeout(() => {
       sessionStorage.setItem("woro-intro-seen", "1");
       setVisible(false);
@@ -30,6 +30,8 @@ export default function IntroLoader() {
       document.body.style.overflow = prev;
     };
   }, [visible]);
+
+  if (!mounted) return null;
 
   // A ring of dots that coalesce into the wordmark center
   const dots = 28;

@@ -7,21 +7,21 @@ import { RevealText } from "./AnimatedText";
 
 export default function CTABanner() {
   return (
-    <section className="relative py-20 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <section className="relative py-16 sm:py-20 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative section-dark rounded-[2.5rem] overflow-hidden p-10 sm:p-20 noise"
+          className="relative section-dark rounded-[2.5rem] overflow-hidden p-6 sm:p-10 md:p-20 noise"
         >
           <div className="absolute inset-0 mesh-dark opacity-70" />
           <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-brand/40 blob" />
           <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-blue/40 blob" style={{ animationDelay: "5s" }} />
 
           <div className="relative max-w-4xl">
-            <h2 className="font-display font-medium text-[clamp(2.6rem,7vw,6rem)] leading-[0.95] tracking-[-0.04em] text-white">
+            <h2 className="font-display font-medium text-[clamp(2rem,7vw,6rem)] leading-[0.95] tracking-[-0.04em] text-white">
               <RevealText as="span">ready to build</RevealText>{" "}
               <span className="font-serif-italic text-white/95">
                 <RevealText as="span" delay={0.15}>something</RevealText>

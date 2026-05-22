@@ -35,10 +35,10 @@ export default function Footer() {
       <div className="absolute inset-0 mesh-dark opacity-50" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-24 pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 pt-20 sm:pt-24 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16 sm:mb-20">
           <div className="lg:col-span-5">
-            <h2 className="font-display font-medium text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+            <h2 className="font-display font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
               Let&apos;s build<br />
               <span className="font-serif-italic text-white/90">something</span>{" "}
               <span className="gradient-text-light">remarkable.</span>
@@ -52,7 +52,7 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-10">
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
             <div>
               <h4 className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-5">Products</h4>
               <ul className="space-y-3">
@@ -112,7 +112,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6 flex-wrap">
           <Logo variant="light" />
           <div className="flex items-center gap-3">
             {[TwitterIcon, LinkedinIcon, GithubIcon, FacebookIcon].map((Icon, i) => (
@@ -125,16 +125,16 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <div className="flex gap-6 text-xs text-white/50">
-            <a href="#" className="hover:text-white transition">Privacy</a>
-            <a href="#" className="hover:text-white transition">Terms</a>
-            <a href="#" className="hover:text-white transition">Cookies</a>
+          <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 text-xs text-white/50">
+            <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition">Terms</Link>
+            <Link href="/privacy#cookies" className="hover:text-white transition">Cookies</Link>
             <span>© {new Date().getFullYear()} WORO Global</span>
           </div>
         </div>
 
         {/* Giant brand wordmark */}
-        <div className="mt-16 -mx-6 lg:-mx-10 overflow-hidden">
+        <div className="mt-12 sm:mt-16 -mx-5 sm:-mx-6 lg:-mx-10 overflow-hidden">
           <div className="font-display font-black text-[22vw] leading-[0.85] text-center bg-gradient-to-b from-white/12 via-white/4 to-transparent bg-clip-text text-transparent select-none">
             woro<span className="text-brand">.</span>
           </div>

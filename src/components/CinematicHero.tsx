@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Play } from "lucide-react";
 import { RevealText } from "./AnimatedText";
+import ShaderBoundary, { useWebGLSupported } from "./ShaderBoundary";
 
 const MeshGradient = dynamic(
   () => import("@paper-design/shaders-react").then((m) => m.MeshGradient),
@@ -28,6 +29,7 @@ const cyclingWords = ["scalable", "intelligent", "secure", "delightful"];
 export default function CinematicHero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const webglOK = useWebGLSupported();
   const ref = useRef<HTMLElement>(null);
 
   // scroll-driven transforms: orb scales up as you enter, zooms and dims as you leave
@@ -141,7 +143,7 @@ export default function CinematicHero() {
         {/* CONTENT LAYER */}
         <motion.div
           style={{ y: headlineY }}
-          className="relative z-[10] h-full flex flex-col justify-between pt-36 sm:pt-44 pb-24 px-6 lg:px-10 max-w-7xl mx-auto"
+          className="relative z-[10] h-full flex flex-col justify-between pt-32 sm:pt-44 pb-16 sm:pb-24 px-5 sm:px-6 lg:px-10 max-w-7xl mx-auto"
         >
           {/* Top bar */}
           <motion.div
@@ -162,7 +164,7 @@ export default function CinematicHero() {
 
           {/* Center column — giant editorial type */}
           <div className="max-w-5xl">
-            <h1 className="font-display font-medium tracking-[-0.05em] leading-[1] text-[clamp(3.6rem,10vw,10rem)] text-white">
+            <h1 className="font-display font-medium tracking-[-0.05em] leading-[1] text-[clamp(2.6rem,10vw,10rem)] text-white">
               <span className="block">
                 <RevealText as="span" delay={2.3}>we design</RevealText>
               </span>

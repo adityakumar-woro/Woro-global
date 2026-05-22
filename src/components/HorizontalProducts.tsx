@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   MessageCircle,
   PhoneCall,
@@ -62,25 +62,46 @@ const products = [
 
 export default function HorizontalProducts() {
   const ref = useRef<HTMLElement>(null);
+  const [isLgUp, setIsLgUp] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    const update = () => setIsLgUp(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
 
-  // Scroll through all 3 panels horizontally
+  // Scroll through all 3 panels horizontally (desktop only)
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.66%"]);
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={ref} className="relative h-[320vh] bg-ink text-white">
-      <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Label + progress bar */}
-        <div className="absolute top-28 left-0 right-0 z-30 px-6 lg:px-10 flex items-center justify-between pointer-events-none">
+    <section
+      ref={ref}
+      className="relative bg-ink text-white lg:h-[320vh]"
+    >
+      {/* Mobile label */}
+      <div className="lg:hidden px-6 pt-20 pb-10">
+        <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/60">
+          <span className="w-6 h-px bg-white/40" />
+          Flagship products
+        </div>
+      </div>
+
+      <div className="lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
+        {/* Desktop label + progress bar (horizontal-scroll mode) */}
+        <div className="hidden lg:flex absolute top-28 left-0 right-0 z-30 px-10 items-center justify-between pointer-events-none">
           <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/60">
             <span className="w-6 h-px bg-white/40" />
             Flagship products
           </div>
-          <div className="hidden sm:flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-white/60">
+          <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-white/60">
             scroll down
             <div className="w-40 h-px bg-white/15 relative">
               <motion.div
@@ -91,8 +112,11 @@ export default function HorizontalProducts() {
           </div>
         </div>
 
-        {/* Horizontal track */}
-        <motion.div style={{ x }} className="flex h-full w-[300%]">
+        {/* Track: stacked column on mobile, horizontal track on desktop */}
+        <motion.div
+          style={isLgUp ? { x } : undefined}
+          className="flex flex-col lg:flex-row lg:h-full lg:w-[300%]"
+        >
           {products.map((p, i) => (
             <ProductPanel key={p.slug} product={p} index={i} />
           ))}
@@ -111,7 +135,7 @@ function ProductPanel({
 }) {
   const Icon = product.icon;
   return (
-    <div className="w-[100vw] h-full shrink-0 relative overflow-hidden flex items-center">
+    <div className="w-full shrink-0 relative overflow-hidden flex items-center py-20 lg:py-0 lg:w-[100vw] lg:h-full">
       {/* layered gradient background */}
       <div
         className="absolute inset-0"
@@ -123,19 +147,19 @@ function ProductPanel({
 
       {/* Giant faint number */}
       <span
-        className="absolute right-[-3vw] top-[8vh] font-display font-black text-[40vw] leading-[0.8] text-white/[0.04] select-none"
+        className="absolute right-[-3vw] top-[6vh] font-display font-black text-[36vw] sm:text-[30vw] lg:text-[40vw] leading-[0.8] text-white/[0.04] select-none"
         aria-hidden
       >
         0{index + 1}
       </span>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-5 sm:px-6 lg:px-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-6">
           <div className="text-[10px] uppercase tracking-[0.22em] mb-6" style={{ color: product.accent }}>
             {product.tag}
           </div>
-          <h2 className="font-display font-medium text-[clamp(3rem,7vw,6.4rem)] leading-[0.95] tracking-[-0.04em] text-white">
+          <h2 className="font-display font-medium text-[clamp(2.2rem,7vw,6.4rem)] leading-[0.95] tracking-[-0.04em] text-white">
             {product.headline}
           </h2>
           <p className="mt-8 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed">
@@ -176,7 +200,7 @@ function ProductPanel({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-20%" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-square max-w-[520px] mx-auto lg:ml-auto"
+            className="relative aspect-square max-w-[320px] sm:max-w-[420px] lg:max-w-[520px] mx-auto lg:ml-auto"
           >
             <div
               className="absolute -inset-10 rounded-full blur-3xl opacity-60"

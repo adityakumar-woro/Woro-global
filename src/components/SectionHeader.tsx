@@ -36,7 +36,7 @@ export default function SectionHeader({
       )}
       <h2
         className={cn(
-          "font-display font-medium text-[clamp(2.4rem,5.2vw,4.4rem)] leading-[0.98] tracking-[-0.035em]",
+          "font-display font-medium text-[clamp(1.9rem,5.2vw,4.4rem)] leading-[1.02] tracking-[-0.035em]",
           light ? "text-white" : "text-ink"
         )}
       >

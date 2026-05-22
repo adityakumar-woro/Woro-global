@@ -23,7 +23,7 @@ export default function ScrollManifesto() {
   return (
     <section
       ref={ref}
-      className="relative section-dark py-40 sm:py-56 overflow-hidden"
+      className="relative section-dark py-28 sm:py-40 md:py-56 overflow-hidden"
     >
       {/* Dark layered backdrop */}
       <div className="absolute inset-0 mesh-dark opacity-70" />
@@ -69,14 +69,14 @@ export default function ScrollManifesto() {
       {/* Top-down fade so circle merges into section */}
       <div className="absolute inset-x-0 top-0 h-[55vh] bg-gradient-to-b from-ink via-ink/40 to-transparent z-[2] pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-10 pt-[26vw] sm:pt-[18vw]">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-6 lg:px-10 pt-[26vw] sm:pt-[18vw]">
         <div className="mb-14 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-white/60">
           <span className="w-6 h-px bg-white/40" />
           Manifesto
           <span className="w-6 h-px bg-white/40" />
         </div>
 
-        <p className="font-display font-medium text-[clamp(2.2rem,5.2vw,4.6rem)] leading-[1.1] tracking-[-0.035em] flex flex-wrap gap-x-3 gap-y-1 text-white">
+        <p className="font-display font-medium text-[clamp(1.7rem,5.2vw,4.6rem)] leading-[1.2] tracking-[-0.035em] flex flex-wrap gap-x-2 sm:gap-x-3 gap-y-1 text-white">
           {words.map((w, i) => (
             <Word
               key={i}

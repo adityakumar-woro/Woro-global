@@ -40,8 +40,8 @@ function Card({ t }: { t: typeof testimonials[number] }) {
 
 export default function Testimonials() {
   return (
-    <section className="relative section-light py-28 sm:py-40 overflow-hidden">
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+    <section className="relative section-light py-20 sm:py-28 md:py-40 overflow-hidden">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
           <div className="lg:col-span-7">
             <SectionHeader

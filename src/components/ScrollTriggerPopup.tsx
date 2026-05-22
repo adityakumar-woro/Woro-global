@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -140,7 +141,7 @@ export default function ScrollTriggerPopup() {
       {open && (
         <motion.div
           key="popup-root"
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 isolate"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 isolate overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -160,30 +161,13 @@ export default function ScrollTriggerPopup() {
             onClick={() => setOpen(false)}
           />
 
-          {/* Close button — always on top */}
-          <motion.button
-            type="button"
-            onClick={() => setOpen(false)}
-            aria-label="Close"
-            data-cursor-label="Close"
-            initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.6, rotate: -45 }}
-            transition={{ delay: 0.35, duration: 0.45, ease: EASE_OUT }}
-            whileHover={{ scale: 1.08, rotate: 90 }}
-            whileTap={{ scale: 0.92 }}
-            className="fixed top-5 right-5 z-[120] w-11 h-11 rounded-full bg-white text-ink border border-white/60 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] flex items-center justify-center pointer-events-auto"
-          >
-            <X className="w-5 h-5" strokeWidth={2.2} />
-          </motion.button>
-
           {/* Modal shell — conic gradient aurora border */}
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.97 }}
             transition={{ duration: 0.65, ease: EASE_OUT }}
-            className="relative z-[110] w-full max-w-5xl"
+            className="relative z-[110] w-full max-w-5xl my-auto"
           >
             {/* Aurora border — only the gradient angle animates; the rectangle itself stays still */}
             <div
@@ -191,12 +175,29 @@ export default function ScrollTriggerPopup() {
               className="aurora-ring absolute -inset-[1.5px] rounded-[30px] opacity-90"
             />
 
+            {/* Close button — solid white pill, clearly visible on the dark pane */}
+            <motion.button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close"
+              data-cursor-label="Close"
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.6 }}
+              transition={{ delay: 0.35, duration: 0.45, ease: EASE_OUT }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              className="absolute top-4 right-4 z-[130] w-11 h-11 rounded-full bg-white text-ink border border-white hover:bg-ink hover:text-white hover:border-ink shadow-[0_16px_32px_-8px_rgba(0,0,0,0.55)] flex items-center justify-center pointer-events-auto transition-colors"
+            >
+              <X className="w-5 h-5" strokeWidth={2.4} />
+            </motion.button>
+
             {/* Inner card */}
             <div className="relative bg-[#0A0A0A] rounded-[28px] overflow-hidden shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)]">
               <div className="grid grid-cols-1 md:grid-cols-[1.05fr_1fr]">
                 {/* LEFT — Cinematic dark pane */}
                 <motion.div
-                  className="relative min-h-[380px] md:min-h-[640px] overflow-hidden"
+                  className="relative min-h-[260px] sm:min-h-[340px] md:min-h-[640px] overflow-hidden"
                   onMouseMove={handleScene}
                   onMouseLeave={() => {
                     mx.set(0);
@@ -282,49 +283,30 @@ export default function ScrollTriggerPopup() {
                     transition={{ duration: 95, repeat: Infinity, ease: "linear" }}
                   />
 
-                  {/* Floating brand chips */}
-                  <motion.div
-                    className="absolute top-[18%] right-[10%] z-[2]"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <BrandChip
+                  {/* Brand cards — three together in a single row near the bottom-right */}
+                  <div className="hidden sm:grid absolute bottom-32 left-6 right-6 z-[2] grid-cols-3 gap-2">
+                    <BrandCard
                       label="WhatsApp CRM"
                       sub="WORO Chat"
-                      glyph="W"
-                      from="#6C5DFC"
-                      to="#2563EB"
+                      image="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=400&q=85&auto=format&fit=crop"
+                      tone="from-emerald-500/70 to-blue-500/70"
                     />
-                  </motion.div>
-                  <motion.div
-                    className="absolute top-[52%] right-[28%] z-[2]"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                  >
-                    <BrandChip
-                      label="AI voice agent"
-                      sub="WORO Voice"
-                      glyph="V"
-                      from="#A78BFA"
-                      to="#4F46E5"
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="absolute bottom-[20%] left-[10%] z-[2]"
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
-                  >
-                    <BrandChip
+                    <BrandCard
                       label="Creator studio"
                       sub="WORO UGC"
-                      glyph="U"
-                      from="#60A5FA"
-                      to="#6C5DFC"
+                      image="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=400&q=85&auto=format&fit=crop"
+                      tone="from-blue-500/70 to-fuchsia-500/70"
                     />
-                  </motion.div>
+                    <BrandCard
+                      label="AI voice agent"
+                      sub="WORO Voice"
+                      image="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&q=85&auto=format&fit=crop"
+                      tone="from-violet-500/70 to-indigo-600/70"
+                    />
+                  </div>
 
                   {/* Content overlay */}
-                  <div className="relative z-[3] h-full flex flex-col justify-between p-8 sm:p-10 md:p-12">
+                  <div className="relative z-[3] h-full flex flex-col justify-between p-6 sm:p-10 md:p-12">
                     <div>
                       <motion.div
                         initial={{ opacity: 0, y: 12 }}
@@ -376,7 +358,7 @@ export default function ScrollTriggerPopup() {
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.9, duration: 0.6, ease: EASE_OUT }}
-                      className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-6"
+                      className="mt-8 sm:mt-10 grid grid-cols-3 gap-3 sm:gap-6 border-t border-white/10 pt-5 sm:pt-6"
                     >
                       <Stat value={120} suffix="+" label="Products shipped" />
                       <Stat value={1} suffix="M+" label="End users reached" decimals={0} />
@@ -386,7 +368,7 @@ export default function ScrollTriggerPopup() {
                 </motion.div>
 
                 {/* RIGHT — Clean form pane */}
-                <div className="relative bg-white p-7 sm:p-10 md:p-12">
+                <div className="relative bg-white p-6 sm:p-10 md:p-12">
                   {/* faint grid */}
                   <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
 
@@ -509,7 +491,7 @@ export default function ScrollTriggerPopup() {
                               </>
                             ) : (
                               <>
-                                Book my free consult
+                                Book my consult
                                 <ArrowUpRight className="w-4 h-4 arrow-fly" />
                               </>
                             )}
@@ -637,30 +619,47 @@ function Underlined({
   );
 }
 
-function BrandChip({
+function BrandCard({
   label,
   sub,
-  glyph,
-  from,
-  to,
+  image,
+  tone,
 }: {
   label: string;
   sub: string;
-  glyph: string;
-  from: string;
-  to: string;
+  image: string;
+  tone: string;
 }) {
   return (
-    <div className="rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 px-4 py-3 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.6)] flex items-center gap-3">
+    <div className="relative w-full h-24 rounded-2xl overflow-hidden border border-white/15 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.55)]">
+      {/* Topic background image */}
+      <Image
+        src={image}
+        alt={label}
+        fill
+        sizes="(max-width: 768px) 33vw, 180px"
+        className="object-cover"
+      />
+      {/* Brand tonal wash */}
       <div
-        className="w-9 h-9 rounded-xl grid place-items-center shadow-[0_8px_22px_-8px_rgba(108,93,252,0.6)]"
-        style={{ background: `linear-gradient(135deg, ${from} 0%, ${to} 100%)` }}
-      >
-        <span className="font-display font-medium text-white text-sm">{glyph}</span>
-      </div>
-      <div className="text-white">
-        <div className="text-[10px] uppercase tracking-[0.2em] text-white/60">{sub}</div>
-        <div className="text-sm font-medium">{label}</div>
+        aria-hidden
+        className={`absolute inset-0 bg-gradient-to-br ${tone} mix-blend-multiply`}
+      />
+      {/* Dark fade for legibility */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,10,10,0.05) 0%, rgba(10,10,10,0.8) 100%)",
+        }}
+      />
+      {/* Labels */}
+      <div className="relative h-full p-2.5 flex flex-col justify-end text-white">
+        <div className="text-[9px] uppercase tracking-[0.18em] text-white/75 leading-none">
+          {sub}
+        </div>
+        <div className="text-[12px] font-medium leading-tight mt-1">{label}</div>
       </div>
     </div>
   );
@@ -691,11 +690,11 @@ function Stat({
   const formatted = display.toFixed(d);
   return (
     <div>
-      <div className="font-display font-medium text-white text-3xl sm:text-[2.1rem] tracking-tight leading-none">
+      <div className="font-display font-medium text-white text-[1.4rem] sm:text-3xl md:text-[2.1rem] tracking-tight leading-none">
         {formatted}
         <span className="gradient-text-light">{suffix}</span>
       </div>
-      <div className="mt-1.5 text-[11px] uppercase tracking-[0.18em] text-white/55">
+      <div className="mt-1.5 text-[9px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.18em] text-white/55 leading-tight">
         {label}
       </div>
     </div>

@@ -50,7 +50,7 @@ export default function Contact() {
     <section id="contact" className="relative section-light py-28 sm:py-40 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30 grid-mask" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
           <div className="lg:col-span-7">
             <SectionHeader
@@ -106,7 +106,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="lg:col-span-7 bg-white border border-line rounded-3xl p-8 sm:p-10 space-y-6"
+            className="lg:col-span-7 bg-white border border-line rounded-3xl p-6 sm:p-8 lg:p-10 space-y-6"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <Field label="Name" id="name">

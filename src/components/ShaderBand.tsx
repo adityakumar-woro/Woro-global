@@ -25,8 +25,8 @@ export default function ShaderBand() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <section className="relative py-16 sm:py-24 md:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function ShaderBand() {
             </div>
           )}
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 p-10 sm:p-16 lg:p-20">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 p-6 sm:p-10 md:p-16 lg:p-20">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/60 mb-7">
                 <span className="w-6 h-px bg-white/40" />

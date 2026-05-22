@@ -48,24 +48,21 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "Could not save submission" }, { status: 500 });
   }
 
-  try {
-    await sendLeadEmail({
-      subject: `New contact-form lead — ${name}`,
-      heading: "New contact-form lead",
-      intro: "A prospect submitted the Contact page form.",
-      replyTo: email,
-      rows: [
-        { label: "Name", value: name },
-        { label: "Email", value: email },
-        { label: "Company", value: company },
-        { label: "Service", value: service },
-        { label: "Phone", value: phone },
-        { label: "Message", value: message },
-      ],
-    });
-  } catch (err) {
-    console.error("[/api/contact] email send failed", err);
-  }
+  // Fire-and-forget: don't block the HTTP response on SMTP delivery
+  sendLeadEmail({
+    subject: `New contact-form lead — ${name}`,
+    heading: "New contact-form lead",
+    intro: "A prospect submitted the Contact page form.",
+    replyTo: email,
+    rows: [
+      { label: "Name", value: name },
+      { label: "Email", value: email },
+      { label: "Company", value: company },
+      { label: "Service", value: service },
+      { label: "Phone", value: phone },
+      { label: "Message", value: message },
+    ],
+  }).catch((err) => console.error("[/api/contact] email send failed", err));
 
   return Response.json({ ok: true });
 }

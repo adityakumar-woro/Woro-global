@@ -27,6 +27,7 @@
     "nodemailer": "^8.0.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "simple-icons": "^16.17.0",
     "tailwind-merge": "^3.5.0",
     "three": "^0.183.2",
     "zod": "^4.3.6"
@@ -42,5 +43,8 @@
     "eslint-config-next": "16.2.3",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "lightningcss-darwin-x64": "^1.32.0"
   }
 }

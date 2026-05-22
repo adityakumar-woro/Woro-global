@@ -17,6 +17,13 @@ async function buildTransporter(): Promise<Transporter> {
       port: Number(process.env.SMTP_PORT ?? 587),
       secure: String(process.env.SMTP_SECURE ?? "false") === "true",
       auth: { user, pass: process.env.SMTP_PASSWORD ?? "" },
+      // Keep one authenticated connection alive and reuse it across requests
+      pool: true,
+      maxConnections: 3,
+      maxMessages: 100,
+      connectionTimeout: 15_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
     });
   }
 

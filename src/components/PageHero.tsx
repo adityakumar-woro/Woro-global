@@ -25,14 +25,14 @@ export default function PageHero({
   const dark = variant === "dark";
   return (
     <section
-      className={`relative pt-40 sm:pt-48 pb-20 sm:pb-28 overflow-hidden ${
+      className={`relative pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-24 md:pb-28 overflow-hidden ${
         dark ? "section-dark" : "section-light"
       }`}
     >
       <div className={dark ? "absolute inset-0 mesh-dark opacity-60" : "absolute inset-0 mesh opacity-90"} />
       <div className={dark ? "absolute inset-0 grid-bg-dark grid-mask opacity-50" : "absolute inset-0 grid-bg grid-mask opacity-50"} />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         {crumbs && (
           <motion.nav
             initial={{ opacity: 0, y: 10 }}
@@ -70,7 +70,7 @@ export default function PageHero({
         </motion.div>
 
         <h1
-          className={`font-display font-medium tracking-[-0.045em] leading-[1.02] text-[clamp(2.8rem,7vw,6.4rem)] ${
+          className={`font-display font-medium tracking-[-0.045em] leading-[1.02] text-[clamp(2.1rem,7vw,6.4rem)] ${
             dark ? "text-white" : "text-ink"
           } ${align === "center" ? "text-center max-w-4xl mx-auto" : "max-w-5xl"}`}
         >

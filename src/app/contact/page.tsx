@@ -32,9 +32,9 @@ export default function ContactPage() {
       />
 
       {/* 4 contact channels */}
-      <section className="relative section-light py-20 sm:py-24 overflow-hidden">
+      <section className="relative section-light py-16 sm:py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-25 grid-mask" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line rounded-3xl overflow-hidden">
             {channels.map((c) => {
               const Icon = c.icon;
@@ -65,7 +65,7 @@ export default function ContactPage() {
       {/* Offices */}
       <section className="relative section-dark py-28 sm:py-36 overflow-hidden">
         <div className="absolute inset-0 mesh-dark opacity-50" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/60 mb-6">
