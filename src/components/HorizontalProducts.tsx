@@ -63,6 +63,7 @@ const products = [
 export default function HorizontalProducts() {
   const ref = useRef<HTMLElement>(null);
   const [isLgUp, setIsLgUp] = useState(false);
+  const pinnedScrollHeight = `${products.length * 115}svh`;
 
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
@@ -84,7 +85,8 @@ export default function HorizontalProducts() {
   return (
     <section
       ref={ref}
-      className="relative bg-ink text-white lg:h-[320vh]"
+      className="relative isolate bg-ink text-white overflow-x-clip"
+      style={isLgUp ? { minHeight: pinnedScrollHeight } : undefined}
     >
       {/* Mobile label */}
       <div className="lg:hidden px-6 pt-20 pb-10">
@@ -94,7 +96,7 @@ export default function HorizontalProducts() {
         </div>
       </div>
 
-      <div className="lg:sticky lg:top-0 lg:h-screen lg:overflow-hidden">
+      <div className="lg:sticky lg:top-0 lg:h-[100svh] lg:overflow-hidden">
         {/* Desktop label + progress bar (horizontal-scroll mode) */}
         <div className="hidden lg:flex absolute top-28 left-0 right-0 z-30 px-10 items-center justify-between pointer-events-none">
           <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/60">
